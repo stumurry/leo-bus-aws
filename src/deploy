@@ -1,0 +1,106 @@
+#!/usr/bin/env python3
+# vim:set expandtab ts=4 sw=4 ai ft=python:
+
+import argparse, json, os, subprocess, sys, base64
+from pathlib import PosixPath
+
+def run(cmd):
+    out = subprocess.Popen(cmd,
+           stdout=subprocess.PIPE,
+           stderr=subprocess.STDOUT,
+           env=e)
+
+    for line in iter(out.stdout.readline, b''):
+        sys.stdout.write(line.decode(sys.stdout.encoding))
+    out.wait()
+
+    out.communicate()
+    return out
+
+parser = argparse.ArgumentParser()
+parser.add_argument("lane", help="dev, tst, etc")
+args = parser.parse_args()
+
+print('>>>> Lane {} <<<<'.format(args.lane))
+
+infile = open('./leo_cli_config.js.in', 'r', encoding='utf-8')
+contents = infile.read()
+infile.close()
+
+git_url = 'configs_url'
+git_secret = 'git_secret'
+
+if args.lane == 'local':
+    leoBus = "databus-leo-local-Bus-HR9EKPLNRX7C"
+elif args.lane == 'dev':
+    leoBus = "databus-leo-dev-Bus-1I6A43VZYRQEE"
+elif args.lane in {'tst', 'prd'}:
+    git_secret = 'git_secret'
+    if args.lane == 'tst':
+        leoBus = 'data-bus-tst-Bus-1LGEPKDGUOYFT'
+    else:
+        leoBus = "data-bus-prd-Bus-1LGT9LKGBHMO0"
+
+contents = contents.replace('%{lane}', args.lane)
+contents = contents.replace('%{leo-bus}', leoBus)
+contents = contents.replace('%{GitUrl}', git_url)
+contents = contents.replace('%{GitSecret}', git_secret)
+print('>>>>> contents changed <<<<<')
+
+new = open('leo_cli_config.js', 'w', encoding='utf-8')
+new.write(contents)
+new.close()
+
+# print('>>>>> exporting AWS_PROFILE <<<<<<')
+e = os.environ.copy()
+# e['AWS_PROFILE'] = 'icentris-{}'.format(args.lane)
+
+# This became necessary due to the @google-cloud packages - jc 3/17/2021
+# Generate tsconfig.json files and modify the bigquery/package.json compile
+# command.
+print('>>>>> running typescript hacks <<<<<<')
+os.chdir('/app/leo-bus/src/node_modules/@google-cloud/storage')
+cmd = ['tsc', '--init']
+out = run(cmd)
+
+if out.returncode != 0:
+    print('Error. Exiting with status code 1')
+    exit(1)
+
+os.chdir('/app/leo-bus/src/node_modules/@google-cloud/bigquery')
+cmd = ['tsc', '--init']
+out = run(cmd)
+
+if out.returncode != 0:
+    print('Error. Exiting with status code 1')
+    exit(1)
+
+with open('package.json', 'r+') as file:
+    p = json.load(file)
+    p['scripts']['compile'] = 'tsc -p .'
+    file.seek(0)
+    json.dump(p, file, indent=4)
+    file.truncate()
+
+print("Success!")
+
+os.chdir('/app/leo-bus/src')
+print('>>>>> running leo-cli <<<<<<')
+cmd = ['leo-cli', 'publish', '-d', args.lane, '-s', '-F', '--force']
+
+if False: # for local testing. -- ndg 3/5/2019
+    cmd.append('--filter')
+    cmd.append('bots/load/vibe')
+else:
+    cmd.append('all')
+
+print(cmd)
+out = run(cmd)
+
+if out.returncode != 0:
+    print('Error. Exiting with status code 1')
+    exit(1)
+else:
+    print("Success!")
+    exit(0)
+

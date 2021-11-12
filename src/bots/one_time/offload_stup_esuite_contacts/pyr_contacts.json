@@ -1,0 +1,20 @@
+{
+  "default": {
+    "first_name": "first_name",
+    "last_name": "last_name",
+    "source": "source",
+    "level_of_interest": "level_of_interest",
+    "mailing_address1": "address1",
+    "mailing_address2": "address2",
+    "city": "city",
+    "zip_code": "postal_code",
+    "state": "state",
+    "country": "country",
+    "user_id": "user_id",
+    "updated_at": "updated_at",
+    "mailing_address_suburb": "suburb",
+    "birthday": "birthday",
+    "last_contacted": "last_contacted",
+    "customer_person_id_esuite": "customer_person_id_esuite"
+  }
+}

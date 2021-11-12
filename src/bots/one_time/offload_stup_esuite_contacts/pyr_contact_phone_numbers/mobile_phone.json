@@ -1,0 +1,8 @@
+{
+  "default": {
+    "contact_id": "contact_id",
+    "phone_number2": "unformatted_phone_number",
+    "phone_number": "phone_number",
+    "mobile_label": "label"
+  }
+}

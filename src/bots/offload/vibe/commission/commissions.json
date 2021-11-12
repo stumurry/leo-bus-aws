@@ -1,0 +1,13 @@
+{
+  "default": {
+    "tree_user_id": "id",
+    "client_user_id": "client_user_id",
+    "commission_run_id": "commission_run_id",
+    "currency_code": "currency_code",
+    "earnings": "earnings",
+    "previous_balance": "previous_balance",
+    "balance_forward": "balance_forward",
+    "fee": "fee",
+    "total": "total"
+  }
+}

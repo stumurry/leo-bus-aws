@@ -1,0 +1,18 @@
+{
+  "add": [
+    {
+      "config": {
+        "leo": {
+          "env": {
+            "DEK": "${DEK}",
+            "CONFIG": "${CONFIG}"
+          }
+        }
+      }
+    }
+  ],
+  "remove": [
+    "config.leo.env.GITLAB_SECRET",
+    "config.leo.env.GITLAB_URL"
+  ]
+}

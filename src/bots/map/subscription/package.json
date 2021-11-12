@@ -1,0 +1,30 @@
+{
+  "config": {
+    "leo": {
+      "cron": {
+        "settings": {
+          "destination": "mapped-subscriptions",
+          "source": "plmb-utc-new-subscriptions"
+        }
+      },
+      "env": {
+        "GIT_SECRET": "${GitSecret}",
+        "GIT_URL": "${GitUrl}"
+      },
+      "memory": 256,
+      "role": "ApiRole",
+      "timeout": 300,
+      "type": "cron"
+    }
+  },
+  "description": "",
+  "directories": {
+    "test": "test"
+  },
+  "main": "index.js",
+  "name": "MapSubscriptionBot",
+  "scripts": {
+    "test": "leo-cli test . "
+  },
+  "version": "1.0.0"
+}

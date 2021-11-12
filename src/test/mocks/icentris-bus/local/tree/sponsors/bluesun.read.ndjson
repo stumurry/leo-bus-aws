@@ -1,0 +1,3 @@
+{"tree_user_id": "1", "upline_id": "", "lft": "0", "rgt": "5", "position": "0", "level": "0"}
+{"tree_user_id": "2", "upline_id": "1", "lft": "1", "rgt": "4", "position": "1", "level": "1"}
+{"tree_user_id": "3", "upline_id": "1", "lft": "2", "rgt": "3", "position": "0", "level": "2"}

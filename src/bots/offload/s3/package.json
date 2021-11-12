@@ -1,0 +1,43 @@
+{
+  "config": {
+    "leo": {
+      "cron": {
+        "settings": {
+          "destination": "cdc-aws-s3-files",
+          "queue": "test",
+          "maxRecords": 500000
+        },
+        "time": "0 */5 * * * *"
+      },
+      "env": {
+        "GIT_SECRET": "${GitSecret}",
+        "GIT_URL": "${GitUrl}"
+      },
+      "memory": 256,
+      "role": "ApiRole",
+      "timeout": 300,
+      "type": "cron",
+      "variations": [
+        {
+          "cron": {
+            "settings": {
+              "queue": "vibe-zleads"
+            },
+            "time": "0 */5 * * * *"
+          },
+          "name": "Zleads"
+        }
+      ]
+    }
+  },
+  "description": "",
+  "directories": {
+    "test": "test"
+  },
+  "main": "index.js",
+  "name": "OffloadS3",
+  "scripts": {
+    "test": "leo-cli test . "
+  },
+  "version": "1.1.0"
+}

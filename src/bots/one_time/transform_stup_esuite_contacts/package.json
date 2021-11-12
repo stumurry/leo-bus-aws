@@ -1,0 +1,32 @@
+{
+  "config": {
+    "leo": {
+      "cron": {
+        "settings": {
+          "destination": "stup-transformed-esuite-contacts-1",
+          "icentris_client": "stampinup",
+          "source": "stup-new-esuite-contacts-1"
+        },
+        "time": "0 */15 * * * * "
+      },
+      "env": {
+        "GIT_SECRET": "${GitSecret}",
+        "GIT_URL": "${GitUrl}"
+      },
+      "memory": 3000,
+      "role": "ApiRole",
+      "timeout": 900,
+      "type": "cron"
+    }
+  },
+  "description": "",
+  "directories": {
+    "test": "test"
+  },
+  "main": "index.js",
+  "name": "TransformStupEsuiteContacts",
+  "scripts": {
+    "test": "leo-cli test . "
+  },
+  "version": "1.1.0"
+}

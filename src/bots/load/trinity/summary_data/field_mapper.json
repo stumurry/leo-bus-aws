@@ -1,0 +1,69 @@
+{
+  "personally_sponsored_rankholders": {
+    "bluesun": {
+      "silver": "silver",
+      "gold": "gold"
+    },
+    "nevetica": {
+      "all_active": "bcq_legs",
+      "area_pet_consultant": "apc_legs",
+      "president": "pd_legs",
+      "international_president": "ip_legs",
+      "black_diamond": "bld_legs",
+      "global_black_diamond": "gbd_legs",
+      "regional_pet_consultant": "rpc_legs",
+      "area_director": "ad_legs",
+      "director": "dr_legs",
+      "regional_director": "rd_legs",
+      "national_director": "nd_legs",
+      "vice_president": "vp_legs",
+      "blue_diamond": "bd_legs",
+      "diamond": "di_legs",
+      "senior_pet_consultant": "spc_legs",
+      "nevetica_pet_consultant": "npc_legs"
+    },
+    "listenuniversity": {
+      "all_active": "bcq_legs",
+      "area_pet_consultant": "apc_legs",
+      "president": "pd_legs",
+      "international_president": "ip_legs",
+      "black_diamond": "bld_legs",
+      "global_black_diamond": "gbd_legs",
+      "regional_pet_consultant": "rpc_legs",
+      "area_director": "ad_legs",
+      "regional_director": "rd_legs",
+      "national_director": "nd_legs",
+      "vice_president": "vp_legs",
+      "blue_diamond": "bd_legs",
+      "diamond": "di_legs"
+    }
+  },
+  "paid_rank": {
+    "bluesun": {
+      "client_level": "id",
+      "name": "description"
+    },
+    "nevetica": {
+      "client_level": "current_dealership_type_id",
+      "name": "curr_month_paid_rank"
+    },
+    "listenuniversity": {
+      "client_level": "paid_rank_id",
+      "name": "paid_rank_description"
+    }
+  },
+  "rank": {
+    "bluesun": {
+      "client_level": "id",
+      "name": "description"
+    },
+    "nevetica": {
+      "client_level": "lifetime_dealership_type_id",
+      "name": "curr_month_lifetime_rank"
+    },
+    "listenuniversity": {
+      "client_level": "rank_id",
+      "name": "rank_description"
+    }
+  }
+}

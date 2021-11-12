@@ -1,0 +1,48 @@
+{
+  "config": {
+    "leo": {
+      "cron": {
+        "settings": {
+          "bot_id": "LoadExigoCommissions",
+          "destination": "new-commissions",
+          "icentris_client": "idlife",
+          "source": "exigo-changes",
+          "tags": [
+            "Exigo",
+            "Change Detection"
+          ]
+        }
+      },
+      "env": {
+        "GIT_SECRET": "${GitSecret}",
+        "GIT_URL": "${GitUrl}"
+      },
+      "memory": 256,
+      "role": "ApiRole",
+      "timeout": 300,
+      "type": "cron",
+      "variations": [
+        {
+          "cron": {
+            "settings": {
+              "bot_id": "LoadExigoCommissions-var-Idlife",
+              "icentris_client": "idlife",
+              "source": "exigo-changes-idlife"
+            }
+          },
+          "name": "Idlife"
+        }
+      ]
+    }
+  },
+  "description": "",
+  "directories": {
+    "test": "test"
+  },
+  "main": "index.js",
+  "name": "LoadExigoCommissions",
+  "scripts": {
+    "test": "leo-cli test . "
+  },
+  "version": "1.0.0"
+}

@@ -1,0 +1,79 @@
+{
+  "splunk": {
+    "url": "https://splunk.<url>.com:8088",
+    "token": ""
+  },
+  "victor_ops": {
+    "url": "http://victorops-test/integrations/generic/20131114/alert/939547f2-ae94-4453-9179-c9b3ee91c749/dtm"
+  },
+  "vibes":{
+    "api":{
+      "tree":"/data/v1/tree/${type}/event"
+    },
+    "auth-css":{
+      "secret":"secret",
+      "token":"token"
+    }
+  },
+  "bus": {
+    "secrets": {
+      "gcp": "gcp_secret"
+    },
+    "tenant": {
+      "idlife": {
+        "exigo": {
+          "database": "idlife",
+          "host": "mssql",
+          "password": "P@ssword1",
+          "port": "1433",
+          "user": "sa"
+        }
+      },
+      "bluesun":{
+        "exigo":{
+          "database":"exigo",
+          "host":"mssql",
+          "password":"P@ssword1",
+          "port":"1433",
+          "user":"sa"
+        },
+        "vibe":{
+          "url": "https://localhost:4000",
+          "api": {
+            "bearer_token": "qSjakfN722pNrmzCcHwZ"
+          },
+          "mysql": {
+            "database":"pyr-bluesun-dev",
+            "host":"db",
+            "password":"",
+            "user":"root"
+          }
+        },
+        "trinity": {
+          "token": "test-token",
+          "context": "NEVETICA",
+          "trinity_wsdl_url": "http://localhost"
+        }
+      }, "galactic-empire": {
+        "exigo":{
+          "database":"exigo",
+          "host":"mssql",
+          "password":"P@ssword1",
+          "port":"1433",
+          "user":"sa"
+        },
+        "vibe":{
+          "api": {
+            "bearer_token": "bearer"
+          },
+          "mysql": {
+            "database":"pyr-bluesun-dev",
+            "host":"db",
+            "password":"",
+            "user":"root"
+          }
+        }
+      }
+    }
+  }
+}

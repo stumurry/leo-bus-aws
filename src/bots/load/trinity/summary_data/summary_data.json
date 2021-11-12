@@ -1,0 +1,42 @@
+{
+  "mapping": {
+    "default": {
+      "personal_volume": "pv",
+      "group_volume": "gv",
+      "commissionable_volume": "cv",
+      "allowed_volume": "av",
+      "customer_personal_volume": "current_period_customer_pv"
+    },
+    "bluesun": {
+    },
+    "nevetica": {
+      "personal_volume": "current_period_pv",
+      "group_volume": "current_period_gv",
+      "commissionable_volume": "commissionable_volume",
+      "qualified": "is_bcq",
+      "customer_personal_volume": "current_period_customer_pv",
+      "allowed_volume": "gv_with_mvr"
+    },
+    "listenuniversity": {
+      "personal_volume": "current_period_pv",
+      "group_volume": "current_period_gv",
+      "commissionable_volume": "commissionable_volume",
+      "customer_personal_volume": "current_period_customer_pv",
+      "allowed_volume": "gv_with_mvr"
+    }
+  },
+  "mappedFieldInExtra": ["customer_personal_volume", "qualified"],
+  "periodtype": {
+    "default": {
+      "weekly": 1,
+      "monthly": 2,
+      "quarterly": 3,
+      "yearly": 4,
+      "daily": 5,
+      "ytdlm": 6
+    },
+    "bluesun": {},
+    "nevetica": {},
+    "listenuniversity": {}
+  }
+}

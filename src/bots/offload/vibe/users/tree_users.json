@@ -1,0 +1,37 @@
+{
+  "default": {
+    "tree_user_id": "id",
+    "rank_id": "rank_id",
+    "paid_rank_id": "paid_rank_id",
+    "client_user_id": "client_user_id",
+    "first_name": "first_name",
+    "last_name": "last_name",
+    "company_name": "company_name",
+    "email": "email",
+    "home_phone": "phone",
+    "mobile_phone": "mobile_phone",
+    "birth_date": "birth_date",
+    "signup_date": "created_date",
+    "user_status_id": "user_status_id",
+    "type_id": "user_type_id",
+    "city": "city",
+    "state": "state",
+    "country": "country",
+    "county": "county",
+    "address": "address1",
+    "address2": "address2",
+    "postal_code": "zip"
+  },
+  "bluesun": {
+    "extra.dealer_id": "field1"
+  },
+  "nevetica": {
+    "extra.dealer_id": "field1"
+  },
+  "listenuniversity": {
+    "extra.dealer_id": "field1"
+  },
+  "stampinup": {
+    "extra.preferred_language": "preferred_language"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "default": {
+    "client_user_id": "CustomerID"
+  },
+  "idlife": {
+    "extra.founding_member": "Field1",
+    "extra.renewal_date": "Field2",
+    "extra.eligible_for_free_idn_product": "Field3",
+    "extra.icentris_customerid": "Field4",
+    "extra.wellness_careington_customer_price_type": "Field5",
+    "extra.waiting_room": "Field6",
+    "extra.recognition_names": "Field7",
+    "extra.ssn_ein_verified": "Field8",
+    "extra.physician_designation": "Field9",
+    "extra.patient_details": "Field10",
+    "extra.referring_customer_id": "Field11"
+  }
+}

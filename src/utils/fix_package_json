@@ -1,0 +1,21 @@
+#!/usr/bin/env python3
+# vim:set expandtab ts=4 sw=4 ai ft=python:
+
+import glob, json
+
+files = glob.glob('bots/**/package.json', recursive=True)
+
+for f in files:
+    print('loading {}'.format(f))
+    old = open(f, 'r', encoding='utf-8')
+    contents = json.loads(old.read())
+    print('got contents')
+    old.close()
+
+    contents['config']['leo']['timeout'] = 300
+    print('contents changed')
+
+    new = open(f, 'w', encoding='utf-8')
+    new.write(json.dumps(contents, sort_keys=True, indent=4))
+    new.close()
+    print('new contents written to {}'.format(f))

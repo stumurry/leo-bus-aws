@@ -1,0 +1,60 @@
+version: '3.3'
+services:
+  leo-bus:
+    image: leo-bus:test
+    hostname: leo-bus-dev
+    build:
+      context: ../..
+      dockerfile: docker/build-test/Dockerfile
+    environment:
+      - NODE_ENV=dev
+      - IS_TEST_ENV=YES
+      - TEST_TENANT=bluesun
+      - TEST_TIMESTAMP=true
+      - EXTUSER=${USER}
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
+      - GIT_URL=#config_url
+      - GIT_SECRET=#git_secret
+    volumes:
+      - ~/.aws:/root/.aws:ro
+    tty: true
+    depends_on:
+      - db
+      - mssql
+      - mssql-setup
+
+  db:
+    image: mariadb:10.2
+    hostname: db
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+    volumes:
+      - ../../data:/data
+      - ./binlog.cnf:/etc/mysql/conf.d/binlog.cnf:ro
+    tty: true
+    ports:
+      - 3306:3306
+
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    container_name: mssql
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=P@ssword1
+      - MSSQL_PID=Developer
+    #volumes:
+      #- Volumes are not supported on Linux
+    ports:
+      - 1433:1433
+
+  mssql-setup:
+    image: microsoft/mssql-tools:latest
+    volumes:
+      - ../../data:/opt/app
+    command: /opt/mssql-tools/bin/sqlcmd -i /opt/app/exigo.sql -U sa -P P@ssword1 -S mssql
+    depends_on:
+      - mssql
+
+      
+

@@ -1,0 +1,10 @@
+{
+  "default": {
+  	"user_id": "user_id",
+  	"created_by": "created_by",
+  	"updated_at": "updated_at",
+    "customer_notes": "content",
+    "contact_id": "notable_id",
+    "notable_type": "notable_type"
+  }
+}

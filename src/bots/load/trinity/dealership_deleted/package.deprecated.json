@@ -1,0 +1,31 @@
+{
+  "config": {
+    "leo": {
+      "cron": {
+        "settings": {
+          "destination": "new-users",
+          "source": "trinity-dealership-deleted"
+        },
+        "time": "0 */1 * * * * "
+      },
+      "env": {
+        "GIT_SECRET": "${GitSecret}",
+        "GIT_URL": "${GitUrl}"
+      },
+      "memory": 128,
+      "role": "ApiRole",
+      "timeout": 300,
+      "type": "cron"
+    }
+  },
+  "description": "",
+  "directories": {
+    "test": "test"
+  },
+  "main": "index.js",
+  "name": "LoadTrinityDealershipDeleted",
+  "scripts": {
+    "test": "leo-cli test . "
+  },
+  "version": "1.1.0"
+}

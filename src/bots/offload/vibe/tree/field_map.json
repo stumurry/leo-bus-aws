@@ -1,0 +1,10 @@
+{
+  "default": {
+    "id": "tree_user_id",
+    "parentId": "upline_id",
+    "lft": "lft",
+    "rgt": "rgt",
+    "position": "position",
+    "level": "level"
+  }
+}

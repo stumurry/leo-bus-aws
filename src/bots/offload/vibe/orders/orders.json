@@ -1,0 +1,14 @@
+{
+  "default": {
+    "tree_user_id": "tree_user_id",
+    "client_user_id": "client_user_id",
+    "order_id": "id",
+    "type_id": "order_type_id",
+    "status_id": "order_status_id",
+    "personal_volume": "bv_total",
+    "commission_volume": "cv_total",
+    "total": "total",
+    "autoship_template.id": "autoship_template_id",
+    "order_date": "order_date"
+  }
+}

@@ -1,0 +1,114 @@
+#!/usr/bin/env python3
+
+import sys
+import json
+import argparse
+import os
+import copy
+import dictlib
+import difflib
+
+# copied from dictlib and a little bodgered
+def xdig(obj, key):
+    array = key.split(".")
+    return x_dig(obj, *array)
+
+def x_dig(obj, *key):
+    if len(key) == 1:
+        return obj # [key[0]] -- return the outer dict
+    return x_dig(obj[key[0]], *key[1:])
+
+def die(error):
+    sys.exit(error)
+
+def update_json(filename, changeset, args):
+    '''
+    Update a json file, using a dictionary changeset "file" with an 'add' and 'remove' key (or just one):
+
+    changeset:
+    ---
+    {
+      "add": [{
+        "foo": "bar"
+      }],
+      "remove": {
+        ["zip"]
+      }
+    }
+
+    either or both add/remove may be included.
+
+    add is implicitly an update, and each element is it's own dictionary, as a merge.
+    remove is only a list of key names (key.nested.name acceptable).
+    '''
+
+    if not changeset.get('add') and not changeset.get('remove'):
+        die('Missing "add" or "remove" argument in changeset')
+
+    add = changeset.get('add')
+    remove = changeset.get('remove')
+
+    cfg = dict()
+    if os.path.exists(filename):
+        with open(filename, "r") as infile:
+            cfg = json.load(infile)
+    orig = copy.deepcopy(cfg)
+
+    # make a backup - maybe this should be optional
+    if args.commit:
+        with open(filename + ".bak", "w") as bak:
+            bak.write(json.dumps(cfg, indent=2))
+
+    if add:
+        for chg in add:
+            cfg = dictlib.union(cfg, chg)
+
+    if remove:
+        for key in remove:
+            outer = xdig(cfg, key)
+            last_key = key.split('.')[-1]
+            if outer:
+                del(outer[last_key])
+
+    for line in difflib.context_diff(
+      json.dumps(orig, indent=2, sort_keys=True).splitlines(),
+      json.dumps(cfg, indent=2, sort_keys=True).splitlines(),
+      fromfile=filename, tofile="-"):
+        if line[-1] == "\n":
+            sys.stdout.write(line)
+        else:
+            print(line)
+
+    if args.commit:
+        print("WRITING >>> " + filename)
+        with open(filename, "w") as outfile:
+            outfile.write(json.dumps(cfg, indent=2, sort_keys=True))
+
+def main():
+    # make usage have a little extra help
+    parser = argparse.ArgumentParser(
+      formatter_class=argparse.RawDescriptionHelpFormatter,
+      epilog='''
+Examples:
+
+    # Dry run
+    ./utils/bots-change-package ./utils/change_timeouts.json
+
+    # Make it so
+    ./utils/bots-change-package ./utils/change_timeouts.json --commit
+
+''')
+    parser.add_argument("changeset")
+    parser.add_argument("--commit", action="store_true")
+    args = parser.parse_args()
+
+    with open(args.changeset) as infile:
+        changes = json.load(infile)
+
+    for dirpath, subdirs, files in os.walk("bots"):
+        if "package.json" in files:
+            filepath = "{}/{}".format(dirpath, "package.json")
+            update_json(filepath, changes, args)
+
+if __name__ == '__main__':
+    main()

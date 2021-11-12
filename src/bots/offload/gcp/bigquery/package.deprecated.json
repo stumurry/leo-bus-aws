@@ -1,0 +1,34 @@
+{
+  "config": {
+    "leo": {
+      "cron": {
+        "settings": {
+          "bot_id": "OffloadGCPBigQuery",
+          "tags": [
+            "GCP",
+            "Offload"
+          ]
+        },
+        "time": "0 0 */1 * * *"
+      },
+      "env": {
+        "GIT_SECRET": "${GitSecret}",
+        "GIT_URL": "${GitUrl}"
+      },
+      "memory": 256,
+      "role": "ApiRole",
+      "timeout": 300,
+      "type": "cron"
+    }
+  },
+  "description": "",
+  "directories": {
+    "test": "test"
+  },
+  "main": "index.js",
+  "name": "OffloadGCPBigQuery",
+  "scripts": {
+    "test": "leo-cli test . "
+  },
+  "version": "1.0.0"
+}

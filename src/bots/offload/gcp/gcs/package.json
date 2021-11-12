@@ -1,0 +1,31 @@
+{
+  "config": {
+    "leo": {
+      "cron": {
+        "settings": {
+          "destination_gcs_bucket": "icentris-ml-%s-cdc-imports",
+          "queue": "cdc-aws-s3-files"
+        },
+        "time": "0 */5 * * * *"
+      },
+      "env": {
+        "GIT_SECRET": "${GitSecret}",
+        "GIT_URL": "${GitUrl}"
+      },
+      "memory": 256,
+      "role": "ApiRole",
+      "timeout": 300,
+      "type": "cron"
+    }
+  },
+  "description": "",
+  "directories": {
+    "test": "test"
+  },
+  "main": "index.js",
+  "name": "OffloadS3ToGCS",
+  "scripts": {
+    "test": "leo-cli test . "
+  },
+  "version": "1.1.0"
+}

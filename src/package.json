@@ -1,0 +1,99 @@
+{
+  "name": "databus-leo",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "node": ">=10.19.0"
+  },
+  "dependencies": {
+    "@google-cloud/bigquery": "^4.1.8",
+    "@google-cloud/storage": "^4.7.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "base-64": "^0.1.0",
+    "bluebird": "3.5.1",
+    "change-case": "^3.0.2",
+    "crypto": "^1.0.1",
+    "dependable": "^1.1.0",
+    "fernet": "^0.3.1",
+    "jsonwebtoken": "^8.3.0",
+    "leo-connector-common": "^2.0.0",
+    "leo-connector-mysql": "^2.0.0",
+    "leo-connector-sqlserver": "^2.0.0",
+    "leo-sdk": "^2.2.0",
+    "lodash.clonedeep": "^4.5.0",
+    "mysql2": "^1.5.3",
+    "pipeline": "^0.1.3",
+    "rewire": "^5.0.0",
+    "squel": "^5.12.2",
+    "superagent": "^3.8.3",
+    "tmp": "^0.1.0",
+    "uuid": "^3.3.2",
+    "xml2js": "^0.4.19"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "event-stream": "3.3.4",
+    "faker": "^4.1.0",
+    "leo-aws": "*",
+    "mocha": "*",
+    "nock": "^9.4.3",
+    "sinon": "^6.3.5",
+    "standard": "^12.0.1"
+  },
+  "scripts": {
+    "test": "standard && mocha",
+    "test-unit": "doctest -m commonjs index.js `find **/*.js`",
+    "mocha": "mocha",
+    "standard": "standard"
+  },
+  "config": {
+    "leo": {
+      "VpcConfig": {
+        "SecurityGroupIds": {
+          "Fn::FindInMap": [
+            "VpcMap",
+            {
+              "Ref": "Environment"
+            },
+            "securityGroups"
+          ]
+        },
+        "SubnetIds": {
+          "Fn::FindInMap": [
+            "VpcMap",
+            {
+              "Ref": "Environment"
+            },
+            "subnets"
+          ]
+        }
+      },
+      "type": "microservice",
+      "build": {
+        "include": [
+          "mysql2",
+          "@google-cloud/storage",
+          "@google-cloud/bigquery"
+        ]
+      },
+      "useWrappers": true
+    }
+  },
+  "standard": {
+    "env": [
+      "mocha"
+    ],
+    "globals": [
+      "after",
+      "afterEach",
+      "before",
+      "beforeEach",
+      "describe",
+      "it"
+    ],
+    "ignore": [
+      "**/node_modules"
+    ]
+  }
+}

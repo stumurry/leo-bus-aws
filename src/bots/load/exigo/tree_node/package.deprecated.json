@@ -1,0 +1,78 @@
+{
+  "config": {
+    "leo": {
+      "cron": {
+        "settings": {
+          "bot_id": "LoadExigoTreeNodeBot",
+          "destination": "new-tree-nodes",
+          "icentris_client": "idlife",
+          "name": "test",
+          "source": "exigo-changes",
+          "tags": [
+            "Exigo",
+            "Change Detection"
+          ]
+        }
+      },
+      "env": {
+        "GIT_SECRET": "${GitSecret}",
+        "GIT_URL": "${GitUrl}"
+      },
+      "memory": 256,
+      "role": "ApiRole",
+      "timeout": 300,
+      "type": "cron",
+      "variations": [
+        {
+          "cron": {
+            "settings": {
+              "bot_id": "LoadExigoTreeNodeBot-var-IdlifePlacementTree",
+              "destination": "new-tree-nodes",
+              "fields": [
+                "CustomerID",
+                "SponsorID",
+                "NestedLevel",
+                "Placement",
+                "Lft",
+                "Rgt"
+              ],
+              "icentris_client": "idlife",
+              "source": "exigo-changes-idlife",
+              "table": "UniLevelTree"
+            }
+          },
+          "name": "IdlifePlacementTree"
+        },
+        {
+          "cron": {
+            "settings": {
+              "bot_id": "LoadExigoTreeNodeBot-var-IdlifeSponsorTree",
+              "destination": "new-tree-nodes",
+              "fields": [
+                "CustomerID",
+                "EnrollerID",
+                "NestedLevel",
+                "Lft",
+                "Rgt"
+              ],
+              "icentris_client": "idlife",
+              "source": "exigo-changes-idlife",
+              "table": "EnrollerTree"
+            }
+          },
+          "name": "IdlifeSponsorTree"
+        }
+      ]
+    }
+  },
+  "description": "",
+  "directories": {
+    "test": "test"
+  },
+  "main": "index.js",
+  "name": "LoadExigoTreeNodeBot",
+  "scripts": {
+    "test": "leo-cli test . "
+  },
+  "version": "1.0.0"
+}

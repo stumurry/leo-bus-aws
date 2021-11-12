@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <soap:Body>
+      <RunCommandResponse xmlns="http://trinitysoft.net/">
+          <RunCommandResult><![CDATA[<?xml version='1.0' encoding='utf-8' ?><RESPONSE systemerrorcount="0" commandresponsecount="1"><COMMANDRESPONSE><COMMANDNAME>REALTIMEVOLUME</COMMANDNAME><COMMANDRESULT>true</COMMANDRESULT><COMMANDRESPONSEDATA type="success"><SUCCESSRESPONSE format="report"><REPORT numrows="2"><ROW>814055|-1|0.00|1425.00|1425.00|1425.00|1425.00|475.00|475.00|475.00|475.00|475.00|475.00|475.00|475.00|475.00|475.00|475.00|0.00|1425.00|0|0|0|0|0|0|1|7|26|0|0|0|787888|59|59|NPC|NPC|3</ROW><ROW>787888|814055|59|NPC|59|NPC|0.00|1425.00|0.00|1425.00|0|0|0|0|0|0|0|0|0|0|0|0|0.00|0.00|1|0|0|0.00|0.00|0|0|0|0|1|0|0|0|0|0|0|0|02/01/2019 12:00AM|02/28/2019 11:59PM|22019|February 2019|Monthly</ROW></REPORT></SUCCESSRESPONSE></COMMANDRESPONSEDATA></COMMANDRESPONSE></RESPONSE>]]></RunCommandResult>
+      </RunCommandResponse>
+   </soap:Body>
+</soap:Envelope>

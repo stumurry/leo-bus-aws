@@ -1,0 +1,8 @@
+{
+  "default": {
+    "contact_id": "contact_id",
+    "phone_number1": "unformatted_phone_number",
+    "phone_number": "phone_number",
+    "home_label": "label"
+  }
+}

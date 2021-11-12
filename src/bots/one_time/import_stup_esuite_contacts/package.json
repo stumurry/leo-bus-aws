@@ -1,0 +1,32 @@
+{
+  "config": {
+    "leo": {
+      "cron": {
+        "settings": {
+          "destination": "stup-new-esuite-contacts-1",
+          "file": "Content.csv",
+          "icentris_client": "stampinup"
+        },
+        "time": "0 */10 * * * * "
+      },
+      "env": {
+        "GIT_SECRET": "${GitSecret}",
+        "GIT_URL": "${GitUrl}"
+      },
+      "memory": 3000,
+      "role": "ApiRole",
+      "timeout": 900,
+      "type": "cron"
+    }
+  },
+  "description": "",
+  "directories": {
+    "test": "test"
+  },
+  "main": "index.js",
+  "name": "ImportStupEsuiteContactsFromS3",
+  "scripts": {
+    "test": "leo-cli test . "
+  },
+  "version": "1.1.0"
+}

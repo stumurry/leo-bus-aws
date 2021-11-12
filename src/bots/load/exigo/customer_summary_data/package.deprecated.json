@@ -1,0 +1,48 @@
+{
+  "config": {
+    "leo": {
+      "cron": {
+        "settings": {
+          "bot_id": "LoadExigoCustomerSummaryData",
+          "destination": "new-summary-data",
+          "icentris_client": "idlife",
+          "source": "exigo-changes",
+          "tags": [
+            "Exigo",
+            "Change Detection"
+          ]
+        }
+      },
+      "env": {
+        "GIT_SECRET": "${GitSecret}",
+        "GIT_URL": "${GitUrl}"
+      },
+      "memory": 256,
+      "role": "ApiRole",
+      "timeout": 300,
+      "type": "cron",
+      "variations": [
+        {
+          "cron": {
+            "settings": {
+              "bot_id": "LoadExigoCustomerSummaryData-var-Idlife",
+              "icentris_client": "idlife",
+              "source": "exigo-changes-idlife"
+            }
+          },
+          "name": "Idlife"
+        }
+      ]
+    }
+  },
+  "description": "",
+  "directories": {
+    "test": "test"
+  },
+  "main": "index.js",
+  "name": "LoadExigoCustomerSummaryData",
+  "scripts": {
+    "test": "leo-cli test . "
+  },
+  "version": "1.0.0"
+}

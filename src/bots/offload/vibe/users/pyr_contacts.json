@@ -1,0 +1,28 @@
+{
+  "default": {
+    "tree_user_id": "tree_user_id",
+    "contact_user_id": "user_id",
+    "first_name": "first_name",
+    "last_name": "last_name",
+    "address": "address1",
+    "address2": "address2",
+    "city": "city",
+    "state": "state",
+    "postal_code": "postal_code",
+    "country": "country",
+    "birth_date": "birthday",
+    "updated_at": "updated_at"
+  },
+  "bluesun": {
+    "extra._comment": "info"
+  },
+  "avon": {
+    "extra.opt_in": "opt_in",
+    "extra.contact_type": "contact_type",
+    "custom_json_data": "custom_json_data",
+    "extra.new_ind": "is_new",
+    "extra.cust_prfl_chng_cd": "is_updated",
+    "extra.cust_lang_cd": "language",
+    "extra.cust_id": "external_id"
+  }
+}

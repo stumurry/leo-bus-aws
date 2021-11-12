@@ -1,0 +1,31 @@
+{
+  "config": {
+    "leo": {
+      "cron": {
+        "settings": {
+          "destination": "new-users",
+          "source": "trinity-dealership-sponsorshipchanged"
+        },
+        "time": "0 */1 * * * * "
+      },
+      "env": {
+        "GIT_SECRET": "${GitSecret}",
+        "GIT_URL": "${GitUrl}"
+      },
+      "memory": 128,
+      "role": "ApiRole",
+      "timeout": 300,
+      "type": "cron"
+    }
+  },
+  "description": "",
+  "directories": {
+    "test": "test"
+  },
+  "main": "index.js",
+  "name": "LoadTrinitySponsorshipChanged",
+  "scripts": {
+    "test": ""
+  },
+  "version": "1.1.0"
+}

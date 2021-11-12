@@ -1,0 +1,74 @@
+version: '3.3'
+services:
+  bus:
+    image: leo-bus:fullstack
+    hostname: "leo-bus-dev"
+    build:
+      context: ../..
+      dockerfile: docker/fullstack/Dockerfile
+      args:
+        - EXTUSER=${USER}
+    environment:
+      - NODE_ENV=local
+      - IS_TEST_ENV=YES
+      - EXTUSER=${USER}
+      - GIT_URL=#git_url
+      - GIT_SECRET=#git_secret
+    volumes:
+      - ~/.bash_aliases:/app/.bash_aliases:ro
+      - ~/.bashrc:/app/.bashrc:ro
+      - ~/.reflex:/app/.reflex:ro
+      - ~/.aws:/app/.aws:ro
+      - ../../src:/app/leo-bus/src
+      - ~/.ssh:/app/.ssh:ro
+    tty: true
+    depends_on:
+      - db
+      - mssql
+      - mssql-setup
+# disable localstack until we are using it for funcational testing - BJG
+#      - localstack
+
+  db:
+    image: mariadb:10.2
+    container_name: db
+    environment:
+        - MYSQL_ALLOW_EMPTY_PASSWORD=true
+    volumes:
+      - ../../data:/data
+      - ../../data/db/fullstack:/var/lib/mysql
+      - ./binlog.cnf:/etc/mysql/conf.d/binlog.cnf:ro
+    ports:
+      - 3307:3306
+
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    container_name: mssql
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=P@ssword1
+      - MSSQL_PID=Developer
+    #volumes:
+      #- Volumes are not supported on Linux
+    ports:
+      - 1433:1433
+
+  mssql-setup:
+    image: microsoft/mssql-tools:latest
+    volumes:
+      - ../../data:/opt/app
+    command: /opt/mssql-tools/bin/sqlcmd -i /opt/app/exigo.sql -U sa -P P@ssword1 -S mssql
+    depends_on:
+      - mssql
+
+
+# disable localstack until we are using it for funcational testing - BJG
+#  # aws emulator
+#  localstack:
+#    image: localstack/localstack:0.8.5
+#    container_name: localstack
+#    environment:
+#      - HOSTNAME_EXTERNAL=localstack
+#    ports:
+#      - "4567-4583:4567-4583"
+#      - "${PORT_WEB_UI-8080}:${PORT_WEB_UI-8080}"

@@ -1,0 +1,10 @@
+{
+	"default": {
+		"customer": 1,
+    "distributor": 2,
+    "preferred_customer": 3
+	},
+	"nevetica": {},
+	"listenuniversity": {},
+	"bluesun": {}
+}

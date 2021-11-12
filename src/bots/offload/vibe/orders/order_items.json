@@ -1,0 +1,14 @@
+{
+  "default": {
+    "order_id": "order_id",
+    "order_item_id": "order_item_id",
+    "sku": "product_code",
+    "name": "product_description",
+    "unit_price": "price_each",
+    "total_price": "price_total",
+    "unit_volume": "bv_each",
+    "unit_commission_volume": "cv_each",
+    "total_volume": "bv",
+    "total_commission_volume": "cv"
+  }
+}

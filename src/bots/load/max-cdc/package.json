@@ -1,0 +1,35 @@
+{
+    "name": "LoadVibeMaxCDCBot",
+    "version": "1.0.0",
+    "private": true,
+    "description": "",
+    "main": "index.js",
+    "directories": {},
+    "scripts": {
+        "test": "leo-cli test . "
+    },
+    "config": {
+        "leo": {
+            "type": "cron",
+            "memory": 256,
+            "timeout": 300,
+            "role": "ApiRole",
+            "env": {
+                "GITLAB_SECRET": "${GitSecret}",
+                "GITLAB_URL": "${GitUrl}"
+            },
+            "cron": {
+                "settings": {
+                    "icentris_client": "bluesun",
+                    "source": "system:maxscale-ec2",
+                    "destination": "vibe-changes",
+                    "tables": {
+                        "test.tree_zleads" : {
+                            "allowed_event_types": ["insert"]
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

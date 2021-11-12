@@ -1,0 +1,10 @@
+{
+  "default": {
+    "commission_run_id": "commission_run_id",
+    "customer_id": "customer_id",
+    "bonus_id": "bonus_id",
+    "amount": "amount",
+    "created_at": "created_at",
+    "updated_at": "updated_at"
+  }
+}

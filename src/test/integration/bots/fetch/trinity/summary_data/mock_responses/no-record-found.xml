@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <soap:Body>
+        <RunCommandResponse xmlns="http://trinitysoft.net/">
+            <RunCommandResult>
+                <![CDATA[<?xml version='1.0' encoding='utf-8' ?><RESPONSE systemerrorcount="0" commandresponsecount="1"><COMMANDRESPONSE><COMMANDNAME>REALTIMEVOLUME</COMMANDNAME><COMMANDRESULT>true</COMMANDRESULT><COMMANDRESPONSEDATA type="success"><SUCCESSRESPONSE format="report"><REPORT numrows="1"><ROW>0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0</ROW></REPORT></SUCCESSRESPONSE></COMMANDRESPONSEDATA></COMMANDRESPONSE></RESPONSE>]]>
+            </RunCommandResult>
+        </RunCommandResponse>
+    </soap:Body>
+</soap:Envelope>
